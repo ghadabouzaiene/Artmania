@@ -1,10 +1,9 @@
 const express = require('express')
 const dbConnect = require('./helpers/dbConnect')
-const config = require('config')
 const app = express()
 const cors = require('cors')
-
-const PORT = config.get('SERVER_CONFIG.PORT') || 5000
+require('dotenv').config({ path: './config/.env' });
+const PORT = process.env.PORT| 5000
 dbConnect()
 //middlewares
 app.use(cors())
