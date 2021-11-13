@@ -1,0 +1,56 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@500;600;700&family=Ubuntu:wght@700&display=swap');
+
+body{
+  background-color:aliceblue;
+  background-size: cover;
+  height: 100vh;
+  
+}
+
+
+.general-container h1 {
+text-align: center;
+font-family: Merriweather Sans;
+padding :50px;
+color:white
+
+
+}
+
+.general-container h3 {
+  text-align: center;
+  color : grey;
+  }
+.general-container .profile-banner {
+  display: flex;
+  flex-wrap: wrap;
+  padding : 30px;
+  width: 100%;
+  align-content: space-between;
+  height: 60vh;
+  width: 100vw;
+  opacity: 0.6;
+  background: url("https://source.unsplash.com/random") no-repeat center;
+  background-size: 100%;
+  object-fit: cover;
+}
+.general-container .profile-banner .avatar {
+  margin-left: 100px;
+  box-shadow: 0 5px 5px 5px white;
+}
+.general-container .profile-banner:hover{
+  opacity :0.8;
+}
+
+
+.general-container .profile-banner .description{
+
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+.general-container .profile-banner  .settings{
+  margin-left: 90vw;
+}

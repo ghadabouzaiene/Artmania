@@ -1,0 +1,30 @@
+.edit-post-container {
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .edit-post-content {
+    max-width: 100%;
+    width: 650px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .swal2-styled.swal2-confirm {
+    background-color: #e98580;
+  }
+  
+  .edit-form p {
+    margin-top: 15px;
+  }
+  
+  label {
+    color: #e98580;
+  }
+  
+  .edit-post-container input {
+    margin-top: 10px;
+  }
+
+

@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Hurricane&family=Merriweather+Sans:wght@500;600;700&family=Ubuntu:wght@700&display=swap');
+
+
+
+.gallery-container .gallery{
+  display: flex;
+  flex-wrap: wrap;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  justify-content: center;
+  grid-gap: 10px;
+  margin-bottom: 20px;
+  min-height: 100vh;
+  margin-top:100px;
+ 
+}
+
+.gallery-container h1 {
+  
+  text-align: center;
+}
+
+.gallery-container{
+  padding-top: 100px;
+  width: 100vw;
+  background-color: rgb(51, 49, 49);
+  color:white;
+  
+}
+.gallery-container h1{
+  font-family: Hurricane;
+  font-size: 4rem;
+  word-spacing: 0.7rem;
+}
+
+.banner {
+  height: 60vh;
+  width: 100vw;
+  opacity: 0.5;
+  background: url("https://source.unsplash.com/random") no-repeat center;
+  background-size: 100%;
+  object-fit: cover;
+}
+.banner .text{
+  margin: 200px;
+  padding-left: 20px;
+  padding-top: 100px;
+  
+}
+
+.banner:hover{
+  opacity: 1;
+}
+
+.banner .text h2 {
+  font-size: 5em;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1em;
+  text-transform: uppercase;
+}
+
+.banner .text h4{
+  font-weight: 800;
+  color: #fff;
+  line-height: 1em;
+  text-transform: uppercase;
+}
+body{
+  background-color: rgb(51, 49, 49);
+}

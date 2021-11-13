@@ -1,0 +1,221 @@
+
+
+        .wrapper {
+            position: relative;
+            background: rgb(44, 44, 44);
+            width: 100vw;
+            height: 100vh;
+            background-image: url('https://th.bing.com/th/id/R.af0ebc252af4d0322bbe21af9a59f0fb?rik=6f6AqBpVE37t%2fw&riu=http%3a%2f%2fwallup.net%2fwp-content%2fuploads%2f2016%2f03%2f10%2f344219-nature-landscape-beach-sand-rock-turquoise-water-sea.jpg&ehk=uCPC4PJ9snRs598MJu1nyl3z%2ffwdjpkAflqIuzS65xc%3d&risl=&pid=ImgRaw&r=0');
+            background-size: cover;
+        }
+
+        .loginContainer {
+            position: absolute;
+            width: 70%;
+            height: 60%;
+            /* margin-left: 13%;
+            margin-right: 21%; */
+            left: 15%;
+            top: 20%;
+            font-size: 0;
+            animation: glide 1s 2s cubic-bezier(0.65, 0.05, 0.36, 1) forwards;
+         
+        }
+
+        .fixalign {
+            width: 40%;
+            height: 56vh;
+            /* background-color: cadetblue; */
+            display: inline-block;
+            padding: 2%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            box-sizing: center;
+            /* font-size: 1; */
+            font-size: initial;
+        }
+
+        .logindiv {
+            width: 50%;
+            background-color: #00b39b;
+            color: rgb(255, 255, 255);
+            opacity: 80%;
+            
+            /* margin-left: 10px; */
+
+        }
+        .logindiv:hover {
+            width: 50%;
+            background-color:#00ceb2;
+            color: rgb(255, 255, 255);
+            opacity: 90%;
+            /* margin-left: 10px; */
+
+        }
+        .field {
+            width: 100%;
+        }
+
+        .iconField {
+            display: inline-block;
+            /* width: 5%; */
+
+        }
+
+        .inputField {
+            display: inline-block;
+            width: 100%;
+        }
+
+        .nodiv {
+            display: inline-block;
+            width: 80%;
+            height: 40px;
+            margin-bottom: 1.5rem;
+            border: 0;
+            background-color: rgba(169, 169, 169, 0.438)
+        }
+
+        .nodiv:hover {
+            box-shadow: 2px 1px 3px blanchedalmond;
+        }
+
+        .onlylogin {
+            width: auto;
+            height: 9vh;
+            background-color: rgb(221, 221, 221);
+            border: 0;
+            color: rgb(61, 61, 61);
+            display: inline-block;
+            transition: 400ms 200ms ease;
+            padding-left: 1rem;
+          padding-right: 1rem;
+
+        }
+
+        .onlylogin:hover {
+            box-shadow: 2px 1px 5px bisque;
+            cursor: pointer;
+            color: rgb(0, 183, 255);
+            padding-left: 2.5rem;
+             padding-right: 2.5rem;
+
+        }
+
+        .textalign {
+            text-align: center;
+            vertical-align: top;
+            background-color: rgba(43, 42, 42, 0.89);
+            color: cornsilk;
+
+        }
+
+        .highlight {
+            float: right;
+            transition: 300ms 200ms ease;
+            margin-top: 5%;
+
+        }
+
+        .highlight:hover {
+            color: bisque;
+            font-family: cursive;
+        }
+
+
+        .passwordsize {
+            width: 72%;
+            margin-left: 6px;
+            transition: 200ms 200ms ease;
+        }
+
+        .usernamesize {
+            margin-left: 10px;
+            transition: 200ms 200ms ease;
+        }
+
+
+        .register {
+            background-color: rgb(223, 223, 223);
+            color: rgb(43, 43, 43);
+            width: auto;
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+            transition: 300ms 200ms ease;
+        }
+
+        .register:hover {
+            box-shadow: 2px 1px 5px bisque;
+          padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
+        .loading-screen {
+            position: absolute;
+            background: #222;
+            color: rgb(0, 171, 250);
+            text-align: center;
+            top: 0;
+            left: 0;
+            animation: slide 1s 2s ease forwards;
+        }
+
+        #loading {
+            margin-top: 20%;
+            font-family: 'Courier New', Courier, monospace;
+
+        }
+
+/*      
+        @keyframes{
+            from{
+                padding: 0.5rem;
+            }
+            to{
+                padding:1.5rem;
+            }
+        } */
+
+
+        @keyframes slide {
+            from {
+                top: 0;
+
+            }
+
+            to {
+                top: -100%;
+            }
+        }
+
+        @keyframes slideOut {
+            from {
+                top: 0;
+
+            }
+
+            to {
+                top: -100%;
+            }
+        }
+
+        @keyframes widthAppear {
+            from {
+                display: none;
+                width: 0;
+            }
+
+            to {
+                display: block;
+                width: 75%;
+            }
+        }
+
+        @keyframes glide {
+            from {
+                top: 90%;
+            }
+
+            to {
+                top: 20%;
+            }
+        }

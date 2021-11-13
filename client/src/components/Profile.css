@@ -1,0 +1,192 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
+
+
+@keyframes checked-anim {
+    50% {
+        width: 3000px;
+        height: 3000px;
+    }
+    100% {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+}
+@keyframes not-checked-anim {
+    0% {
+        width: 3000px;
+        height: 3000px;
+    }
+}
+body{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+#menu li, a {
+    margin: 75px 0 -55px 0;
+    color: #6b6b6b;
+    font: 14pt "Roboto", sans-serif;
+    font-weight: 700;
+    line-height: 1.8;
+    text-decoration: none;
+    text-transform: none;
+    list-style: none;
+    outline: 0;
+    display: none;
+
+}
+
+
+#menu li {
+    width: 230px;
+    text-indent: 56px;}
+a:focus {
+    display: block;
+    color: #333;
+    background-color: #eee;
+    transition: all .5s;
+    text-decoration: none;
+    list-style: none;
+   
+}
+
+
+
+
+#trigger, #profile-burger, #profile-burger:before, #profile-burger:after {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    background: #515a5e;
+    width: 30px;
+    height: 5px;
+    transition: .2s ease;
+    cursor: pointer;
+    z-index: 1;
+   
+}
+#trigger {
+    height: 25px;
+    background: none;
+}
+#profile-burger:before {
+    content: " ";
+    top: 10px;
+    left: 0;
+}
+#profile-burger:after {
+    content: " ";
+    top: 20px;
+    left: 0;
+}
+#menu-toggle:checked + #trigger + #profile-burger {
+    top: 35px;
+    transform: rotate(180deg);
+    transition: transform .2s ease;
+}
+
+#menu-toggle:checked + #trigger + #profile-burger:before {
+    width: 20px;
+    top: -2px;
+    left: 18px;
+    transform: rotate(45deg) translateX(-5px);
+    transition: transform .2s ease;
+}
+#menu-toggle:checked + #trigger + #profile-burger:after {
+    width: 20px;
+    top: 2px;
+    left: 18px;
+    transform: rotate(-45deg) translateX(-5px);
+    transition: transform .2s ease;
+}
+#menu {
+    position: absolute;
+    margin: 0; padding: 0;
+    width: 110px;
+    height: 110px;
+    background-color: #fff;
+    border-bottom-right-radius: 100%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.26);
+    animation: not-checked-anim .2s both;
+    transition: .2s;
+}
+#menu-toggle:checked + #trigger + #profile-burger + #menu {
+    animation: checked-anim 1s ease both;
+}
+#menu-toggle:checked + #trigger ~ #menu > li, a {
+    display: block;
+}
+[type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+    display: none;
+}
+
+.profile-container{
+   
+    width: 100vw;
+}
+
+.profile-container .description {
+   display: flex;
+   flex-wrap: wrap;
+   
+}
+
+.profile-container .banner{
+    display: flex;
+    flex-wrap: wrap;
+    padding : 30px;
+    width: 100%;
+    align-content: space-between;
+    height: 60vh;
+    width: 100vw;
+    opacity: 0.6;
+    background: url("https://source.unsplash.com/random") no-repeat center;
+    background-size: 100%;
+    object-fit: cover;
+}
+
+.description {
+    align-self: center;
+    padding:100px;
+    font-family: Roboto;
+}
+
+.profile-container .banner h1{
+align-content: flex-start;
+}
+
+.profile-container .banner img{
+    margin-left: 700px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: 20px;
+    box-shadow:2px 2px 2px 2px grey;
+    object-fit: cover;
+    object-position: center right
+    }
+.profile-container .banner .upload{
+    font-size: 0.7rem;
+}
+.profile-container .banner .logout{
+font-size: 2rem;
+padding: 10px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    justify-content: center;
+    grid-gap: 10px;
+    margin-bottom: 20px;
+    min-height: 100vh;
+    
+}
+.add-btn{
+    text-align:right;
+    position: fixed;
+    top: 0;
+    align-self: flex-end;
+}
+

@@ -1,0 +1,29 @@
+
+.card-details-conatiner img {
+  width: 100%;
+
+
+}
+
+.card-details-info {
+  padding: 10px;
+  text-align: left;
+}
+
+.card-details-info p {
+  font-size: 0.9rem;
+  margin: 10px auto;
+  opacity: 0.8;
+}
+
+.card-details-info span {
+  font-size: 1rem;
+}
+.liked {
+  color :red;
+}
+.not-liked{
+  color : white;
+}
+
+
