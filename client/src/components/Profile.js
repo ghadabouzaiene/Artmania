@@ -3,16 +3,19 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
 import { Avatar } from '@mui/material';
+import Box from '@mui/material/Box';
+import Tab from '@mui/material/Tab';
+import TabContext from '@mui/lab/TabContext';
+import TabList from '@mui/lab/TabList';
+import TabPanel from '@mui/lab/TabPanel';
 import firebase from 'firebase'
-import {Button} from 'react-bootstrap'
-import { getUsers } from '../redux/actions/usersActions';
 import './Profile.css'
 import { useDispatch, useSelector } from 'react-redux';
-
+import { logout} from '../redux/actions/authActions'
 import Cards from './Cards/Cards';
 import { Link } from 'react-router-dom';
 import Upload from '../firebaseComps/Upload';
-
+import { useHistory } from "react-router";
 
 
 
@@ -24,7 +27,7 @@ import useFirestore from '../firebaseHooks/useFirestore';
 
 
 const UserProfile = ({match}) => {
-
+const history = useHistory()
   //declaring
   const auth = useSelector(state => state.auth)
   const dispatch = useDispatch()
@@ -37,9 +40,17 @@ const UserProfile = ({match}) => {
   const [profilepic,setProfilePic]= React.useState('')
   const display =false
 
+  const [value, setValue] = React.useState('1');
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+
 //useEffect Hook
  React.useEffect( async () => {
   
+ if(auth && auth.user){
   setResultContains("Loading...");
   const hitData = await collectionRef
     .where("likes", "array-contains", auth.user._id)
@@ -49,7 +60,7 @@ const UserProfile = ({match}) => {
   console.log("hit",hitData);
   setResultContains(JSON.stringify(hitData, null, 4));
   setData(hitData)
-
+  console.log(resultContains)
       const datapic = await picRef
       .where("owner", "==" ,  auth.user._id)
       .orderBy("createdAt","desc")
@@ -57,22 +68,37 @@ const UserProfile = ({match}) => {
       .get()
       .then(res => res.docs.map(doc => doc.data()))
       console.log(datapic)
-      setProfilePic(datapic[0].url)
-      
+      if (datapic.length===0){
+        setProfilePic('')
+      }else{
+        setProfilePic(datapic[0].url)
+      }
+    
+      console.log(data)
      
+ }
       
     }, [])
     
 
 //functions 
 
- 
+const Logout=()=>{
+  dispatch(logout())
+}
+const handleReload =()=>{
+  history.push('/addphoto')
+ window.location.reload()
+}
+const handleReloadHome =()=>{
+  history.push('/')
+ window.location.reload()
+}
 
 
     return (
 
       <div >
-        <div className="side"></div>
         <div className="profile-container"> 
      
           <div className="description"> { auth.user  ? <span>
@@ -83,18 +109,39 @@ const UserProfile = ({match}) => {
       /> 
          <Upload ></Upload>
          <h1 >
-          {auth.user.firstname}</h1>
+         Welcome, {auth.user.firstname}</h1>
            </span> : <div></div>}</div>
-           <div style={{height:"200px"}}></div>
-<div className="gallery">{auth  && userdocs ? userdocs.map( el => 
-  <Cards key={el.id} posts={el} likedPhotos={data} display={display}></Cards>
-  ): <div></div>
-  } <br/>
- 
-  <div className="add-btn"><Link to="/addphoto" ><Fab color="primary" aria-label="add">
+
+<Box sx={{ width: '100%', typography: 'body1' }}>
+      <TabContext value={value}>
+        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+          <TabList onChange={handleChange} aria-label="lab API tabs example">
+            <Tab label="Uploads" value="1" />
+            <Tab label="Favorite" value="2" />
+            <Tab label="Collections" value="3" />
+          </TabList>
+        </Box>
+       
+        <TabPanel value="1"> 
+        <div className="gallery"> 
+      { userdocs && userdocs.length!==0 ? 
+    userdocs.map( el => 
+        <Cards key={el.id} posts={el} likedPhotos={data} display={display}/>) 
+  : <div> No Uploads Yet</div>} </div></TabPanel>
+        
+        <TabPanel value="3">This Feature is not functional yet</TabPanel>
+      </TabContext>
+    </Box>
+    
+<div className="add-btn"><Link to="/addphoto" onClick={handleReload } ><Fab color="primary" aria-label="add">
   <AddIcon />
+</Fab></Link>
+<Link><Fab color="secondary" aria-label="out" onClick={()=>Logout()}>
+<i className="fas fa-sign-out-alt"></i>
+</Fab></Link>
+<Link to="/" onClick={handleReloadHome } ><Fab color="secondary" aria-label="home">
+    <i className="fas fa-home"></i>
 </Fab></Link></div>
-</div>:<div></div>
 </div>
       </div>
     )

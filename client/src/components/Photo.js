@@ -1,62 +1,104 @@
 import React, { useEffect, useState } from "react"
-import ReactDOM from "react-dom"
-import firebase from 'firebase'
 import { useHistory } from "react-router";
 import Swal from "sweetalert2";
+import TextField from '@mui/material/TextField';
 import { projectFirestore } from "../firebase/config"
 import UploadForm from "../firebaseComps/UploadForm";
-import useFirestore from "../firebaseHooks/useFirestore"
-import { collection, query, orderBy, limit } from "firebase/firebase-firestore";  
-import './Edit.css'
+import useFirestore from "../firebaseHooks/useFirestore" 
+import OutlinedInput from '@mui/material/OutlinedInput';
+import { useTheme } from '@mui/material/styles';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import Chip from '@mui/material/Chip';
+import Box from '@mui/material/Box';
+import './Photo.css'
 
 
 
-function Photo({match}) {
+
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+};
+
+const tagList = [
+  'nature',
+  'friends',
+  'wedding',
+  'love',
+  'books',
+  'desktop',
+  'old',
+  'black and white',
+  'girls',
+  'fashin',
+  'photography',
+  'anime',
+  'cartoon',
+  'life',
+  'rain',
+  'night',
+  'snow',
+  'food',
+  'gaming',
+  'sea',
+  'city',
+  'countryside',
+  'mountains',
+  'kids',
+  'new born',
+  'celebration',
+  'home',
+];
+
+function getStyles(name, personName, theme) {
+  return {
+    fontWeight:
+      personName.indexOf(name) === -1
+        ? theme.typography.fontWeightRegular
+        : theme.typography.fontWeightMedium,
+  };
+}
+
+function Photo() {
+ 
   const history = useHistory()
     //import the selected document 
     const { docs } = useFirestore('images');
-  // React Hooks declarations
-  const [data, setData] = useState({
-    id: "",
-    story: "",
-    url: "",
-    timeStamp: "",
-    tags: [],
-  });
- 
- 
-    const [tag, setTags] = useState([])
-  const [query, setQuery] = useState("")
+
   const [story,setStory] =useState("")
+
+  const theme = useTheme();
+  const [tagName, setTag] = React.useState([]);
+
+  const handleTagChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setTag(
+      // On autofill we get a the stringified value.
+      typeof value === 'string' ? value.split(',') : value,
+    );
+  };
+
+const Reload =()=>{
+  window.location.reload()
+}
+
 
   const handleChange =(e)=>{
       setStory(e.target.value)
       console.log(story)
   }
 
-  const handleClickTag = () => { // Save tag term state to React Hooks
-  
-    // Add the tag term to the list onClick of Search button
-   
-
-    // Save tag term state to React Hooks
-    setTags(tag => [...tag, " "+query])
-
-    // setSearches(searches => searches.concat(query))
-    console.log(tag)
-  }
-
-  const updateQuery = ({ target }) => {
-    // Update query onKeyPress of input box
-    setQuery(target.value)
-  }
-
-  const keyPressed = ({ key }) => {
-    // Capture tag on Enter key
-    if (key === "Enter") {
-      handleClickTag()
-    }
-  }
 
   const submitHandler = e => {
     // Prevent form submission on Enter key
@@ -79,7 +121,7 @@ const FinalSubmit =()=>{
           const index = docs[len].id
          projectFirestore.collection("images").doc(index).update({
            story : story,
-           tags : tag
+           tags : tagName
          })
 
  Swal.fire({
@@ -110,52 +152,63 @@ history.push('/profile')
 
  console.log(docs)
 
-  const Tag = ({ query }) => <li>{query}</li>
 
   return (
-    <div style={{backgroundColor : "grey", height:"100vh"}}>
-      <h1 style = {{ textAlign :"center"}}>Add your Photo Info..</h1>
+    <div className="add-photo-container">
+     <div className="adding">
+     <h1>Add  your Photo Info..</h1>
        <div className="edit-post-container">
-      
       <div className="break" />
 
       <form onSubmit={submitHandler}>
         <div >
           <UploadForm></UploadForm>
-        <input className="story-field-input" type="text" placeholder="Add Story..." onChange={handleChange}></input>
-  
-          <input
-            className="tag-field-input"
-            placeholder="Edit tags..."
-            type="text"
-            onChange={updateQuery}
-            onKeyPress={keyPressed}
-          />
-          <button
-            className="btn"
-            type="button"
-            onClick={()=>handleClickTag()}
-          >
-            Add Tags
-          </button>
+       <br/> <TextField 
+        helperText="Please enter the photo story"
+        id="demo-helper-text-aligned"
+        label="Story"
+        onChange={handleChange}
+      />
 
-          <h6 className="new-tags">New tags:</h6>
-      <ul className="previousSearch">
-        {tag.map((query, i) => (
-          <Tag
-            query={query}
-            // Prevent duplicate keys by appending index:
-            key={query + i}
-          />
-        ))}
-      </ul>
-        
-        
-        </div>
-      </form>
+
+
+
+<FormControl sx={{ m: 1, width: 300 }}>
+        <InputLabel id="demo-multiple-chip-label">Tags</InputLabel>
+        <Select
+          labelId="demo-multiple-chip-label"
+          id="demo-multiple-chip"
+          multiple
+          value={tagName}
+          onChange={handleTagChange}
+          input={<OutlinedInput id="select-multiple-chip" label="Tags" />}
+          renderValue={(selected) => (
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+              {selected.map((value) => (
+                <Chip key={value} label={value} />
+              ))}
+            </Box>
+          )}
+          MenuProps={MenuProps}
+        >
+          {tagList.map((name) => (
+            <MenuItem
+              key={name}
+              value={name}
+              style={getStyles(name, tagName, theme)}
+            >
+              {name}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
      
       <button className="btn" onClick={()=>FinalSubmit()}>Add</button>
-    </div>
+        </div>
+      </form>
+    </div></div>
+    <div className="side-image"></div>
+     
     </div>
 
   )

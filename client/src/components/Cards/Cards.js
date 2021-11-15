@@ -1,31 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { Link} from "react-router-dom";
 import moment from "moment";
-
 import CardDetails from "./CardDetails";
 import Swal from "sweetalert2";
 import 'semantic-ui-css/semantic.min.css'
 import "./Cards.css";
 import useFirestore from "../../firebaseHooks/useFirestore";
 import { useSelector } from "react-redux";
-import { projectFirestore, projectStorage} from "../../firebase/config";
+import { projectFirestore} from "../../firebase/config";
 import firebase from "firebase"
 import Box from '@mui/material/Box';
 import { Fab } from "@mui/material";
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-
+import {useHistory} from 'react-router'
 
 
 
 function Cards({posts,likedPhotos,display}) {
+  const history=useHistory()
+const auth = useSelector(state=>state.auth)
+const { docs } = useFirestore('images');
+const [active, setActive] = useState(false)
 
-  const collectionRef = firebase.firestore().collection("images")
-  const auth = useSelector(state=>state.auth)
-  const { docs } = useFirestore('images');
-
- const [active, setActive] = useState(false)
- 
 
   const [data, setData] = useState({
     id: "",
@@ -42,8 +39,14 @@ function Cards({posts,likedPhotos,display}) {
  
   const [click, setClick] = useState(false);
   
-
-  
+  const handleEditReload =()=>{
+    history.push(`/edit/post/${posts.id}`)
+   window.location.reload()
+  }
+  const handleProfile =()=>{
+    history.push(`/profile/${posts.author}`)
+   window.location.reload()
+  }
 
 
 
@@ -143,7 +146,7 @@ function Cards({posts,likedPhotos,display}) {
                       pathname: `/edit/post/${posts.id}`,
                       state: { posts: posts.story },
                     }}
-                  >
+                  onClick={handleEditReload}>
                    { !display ? <Fab size="small" aria-label="edit" onClick={() => {
                         setData({
                           id: posts.id,
@@ -158,7 +161,8 @@ function Cards({posts,likedPhotos,display}) {
                       <EditIcon  />
                       </Fab>:<span></span>}
                   </Link>
-                  { display ? <Link to={`/profile/${posts.author}`}><Fab size="small" aria-label="edit">
+                  { display ? <Link to={`/profile/${posts.author}`} onClick={handleProfile}>
+                    <Fab size="small" aria-label="edit">
                     <i style={{color:"white"}} class="fas fa-user"></i></Fab></Link>:<span></span>}
 
             {active===true  ||  likedPhotos.includes(posts.id)===true ? 

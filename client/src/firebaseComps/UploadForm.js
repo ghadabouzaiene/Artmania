@@ -4,7 +4,7 @@ import ProgressBar from './ProgressBar';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
-import Stack from '@mui/material/Stack';
+
 
 
 
@@ -19,7 +19,7 @@ const UploadForm = () => {
   const {docs} = useFirestore("images")
   const [file, setFile] = useState(null);
   const [error, setError] = useState(null);
-  const [id,setId]=useState(null)
+  console.log(docs)
 
 
   const types = ['image/png', 'image/jpeg'];

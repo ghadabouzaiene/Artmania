@@ -4,9 +4,7 @@ import Box from '@mui/material/Box';
 import ImageListItem from '@mui/material/ImageListItem';
 import { getUsers } from '../redux/actions/usersActions';
 import { useDispatch, useSelector } from 'react-redux';
-import useFirestore from '../firebaseHooks/useFirestore';
 import Avatar from '@mui/material/Avatar';
-
 import {Button} from 'react-bootstrap'
 import firebase from 'firebase'
 import './GeneralProfile.css'
@@ -20,10 +18,7 @@ const GeneralProfile = ({match}) => {
     const dispatch = useDispatch()
     const collectionRef = firebase.firestore().collection('images')
     const picRef = firebase.firestore().collection('profile pictures')
-    const {docs}=useFirestore('images')
-    const users = useSelector(state => state.users.allusers)
-    const auth = useSelector(state => state.auth)
-    const userprofile = docs.filter(el => el.author === match.params.id)
+    const users = useSelector(state => state.users.allusers);
     const user = users.find(el=> el._id===match.params.id)
     const [images,setImages]=React.useState([])
     const [profile,setProfile]= React.useState('')
@@ -63,13 +58,12 @@ const GeneralProfile = ({match}) => {
         src={profile}
         sx={{ width: 200, height: 200 }}
       /> }  
-          <div className="description"> { user && images ? <span><h1 >
+          <div className="description"> { user && images ? <div><h1 >
           {user.firstname}  
-         <span> <Button >Hire</Button>{' '}
+        <Button >Hire</Button>{' '}
           <Button variant="light">Follow</Button>{' '}
-          </span></h1>
-         
-           </span> : <div></div>}</div>
+          </h1></div>
+           : <div></div>}</div>
           
            </div>
            <Box style={{margin:"20px 150px 0 20px", textAlign:"center"}} sx={{ width: "97vw", height: "100vh" }}>

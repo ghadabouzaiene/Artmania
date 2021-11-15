@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-require('dotenv').config({ path: './config/.env' });
+require('dotenv').config({ path: './config/config.env' });
 
 const dbConnect = () => {
     mongoose.connect(process.env.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true }, (err) => {

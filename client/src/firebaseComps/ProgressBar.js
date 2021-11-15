@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import useStorage from '../firebaseHooks/useStorage';
-import ProBar from 'react-bootstrap/ProgressBar'
 import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
  

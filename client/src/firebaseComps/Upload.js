@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import useFire from '../firebaseHooks/useFire';
 import Progress from './Progress';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
@@ -14,12 +13,10 @@ const Input = styled('input')({
 
 const Upload = ({profile}) => {
   
-  const {pictures} = useFire("profile pictures")
 
   const [file, setFile] = useState(null);
   const [error, setError] = useState(null);
   
-
 
   const types = ['image/png', 'image/jpeg'];
 
@@ -33,6 +30,7 @@ console.log(selected)
     } else {
       setFile(null);
       setError('Please select an image file (png or jpg)');
+      console.log(error)
     }
 
   };

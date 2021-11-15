@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useHistory } from "react-router";
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
@@ -6,14 +7,12 @@ import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
-import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import { logout} from '../redux/actions/authActions'
 import { useDispatch} from 'react-redux';
-import Home from './Home'
+
 
 import { createSvgIcon } from '@mui/material/utils';
 
@@ -27,15 +26,27 @@ const AccountMenu =()=> {
 
   const dispatch = useDispatch()
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const history=useHistory()
   const open = Boolean(anchorEl);
+  
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
-
-
+const getHome=()=>{
+history.push('/')
+}
+const getSamples=()=>{
+  history.push('/samples')
+}
+const getProfile=()=>{
+  history.push('/profile')
+}
+const handleLogout =()=>{
+  dispatch(logout())
+}
 
   return (
     <React.Fragment>
@@ -80,25 +91,23 @@ const AccountMenu =()=> {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-        <MenuItem >
-          <Avatar  to={{
-                      pathname: `/profile`,
-                    }} /> Profile
+        <MenuItem onClick={getProfile}>
+          <Avatar></Avatar>Profile
         </MenuItem>
         <Divider />
-        <MenuItem >
+        <MenuItem onClick={getHome}>
           <ListItemIcon>
           <HomeIcon />
           </ListItemIcon>
          Home
         </MenuItem>
-        <MenuItem>
+        <MenuItem onClick={getSamples}>
           <ListItemIcon>
             <Settings fontSize="small" />
           </ListItemIcon>
-          Settings
+          Artwork
         </MenuItem>
-        <MenuItem onClick={()=>dispatch(logout())}>
+        <MenuItem onClick={()=>handleLogout()}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>

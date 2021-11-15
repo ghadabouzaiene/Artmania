@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-require('dotenv').config({ path: './config/.env' });
+require('dotenv').config({ path: './config/config.env' });
 
 const tokenMiddleware = async (req, res, next) => {
     try {

@@ -1,12 +1,4 @@
-import React, { useEffect, useState } from "react";
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import moment from "moment";
-import firebase from 'firebase'
-import "./CardDetails.css";
-import { useSelector } from "react-redux";
-import Swal from "sweetalert2";
-import { useHistory } from "react-router";
+import React from "react";
 
 
 function CardDetails({ doc}) {

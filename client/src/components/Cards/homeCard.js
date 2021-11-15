@@ -7,6 +7,7 @@ import { Card } from 'react-bootstrap';
 
 
 
+
 const App = ({image})=> {
 	
 

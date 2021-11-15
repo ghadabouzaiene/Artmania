@@ -1,4 +1,4 @@
-import {GET_USERS_SUCCESS,GET_PHOTOS_SUCCESS } from "./authTypes"
+import {GET_USERS_SUCCESS} from "./authTypes"
 import axios from 'axios'
 import { prefixe } from "../../helpers/constant"
 

@@ -1,7 +1,7 @@
 const User = require('../models/User')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-const config = require('config')
+require('dotenv').config({ path: './config/config.env' });
 const { validationResult } = require('express-validator')
 
 const register = async (req, res) => {
@@ -30,7 +30,7 @@ const register = async (req, res) => {
         const payload = {
             sub: registredUser._id
         }
-        const token = await jwt.sign(payload, config.get("JWT_CONFIG.SECRET"))
+        const token = await jwt.sign(payload,process.env.SECRET)
         res.json({ token })
 
     }
@@ -57,7 +57,7 @@ const login = async (req, res) => {
         const payload = {
             sub: user._id
         }
-        const token = await jwt.sign(payload, config.get("JWT_CONFIG.SECRET"))
+        const token = await jwt.sign(payload, process.env.SECRET)
         res.json({ token })
 
     } catch (err) {
