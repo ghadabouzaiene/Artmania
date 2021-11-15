@@ -5,7 +5,6 @@ import 'semantic-ui-css/semantic.min.css'
 import "./Cards/Cards.css";
 import useFirestore from "../firebaseHooks/useFirestore";
 import { useSelector} from "react-redux";
-import  UnstyledInput from './Search'
 import firebase from "firebase"
 import { useHistory } from "react-router";
 
@@ -25,11 +24,11 @@ const Samples = () => {
   const [search, setSearch] = React.useState("");
 
   const display =true
-  const onChange = (e)=>{
+  /* const onChange = (e)=>{
   
   setSearch(e.target.value)
   console.log(search)
-}
+} */
 
 //useEffect Hook
  React.useEffect( async () => {
@@ -67,7 +66,7 @@ const Samples = () => {
     return (
         <div>
          { auth && auth.user && docs && data && profilepic ?
-        <div> <div style={{marginLeft:"80vw"}}><UnstyledInput  onChange={onChange} /> </div>
+        <div> <div style={{marginLeft:"80vw"}}> </div>
           <div className="banner">
             <div className="text">
              <h2> Our Users Upload ART</h2> <br/>
