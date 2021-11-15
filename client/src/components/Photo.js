@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import { useHistory } from "react-router";
 import Swal from "sweetalert2";
 import TextField from '@mui/material/TextField';
@@ -89,9 +89,7 @@ function Photo() {
     );
   };
 
-const Reload =()=>{
-  window.location.reload()
-}
+
 
 
   const handleChange =(e)=>{
