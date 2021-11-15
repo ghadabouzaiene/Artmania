@@ -11,14 +11,6 @@ app.use(express.json({ limit: '50mb' }))
 app.use('/api/user', require('./routes/userRoutes'))
 
 //deploy
-if (process.env.NODE_ENV === 'production') {
-  // Set static folder
-  app.use(express.static('client/build'));
-
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-  });
-}
 
 
 
