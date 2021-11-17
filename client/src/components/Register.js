@@ -35,7 +35,7 @@ export default function RegisterPage() {
         <div >
         <div className="registerwrapper">
                 <div className="registerContainer">
-                    <div className="fixalign registerdiv input-icons">
+                    <div className="fixalignreg registerdiv input-icons">
                         <form  onSubmit={handleSubmit}>
                             <h1>Register</h1>
                             <p>
@@ -66,7 +66,7 @@ export default function RegisterPage() {
                                 <input className="nodiv usernamesize" type="email" style={{ alignSelf: 'center' }} placeholder="email" onChange={(e) => setInfo({ ...info, email: e.target.value })}></input><br/>
                                 </span>
                             </div>
-                            <div className="field"> <label for="password"></label><i className="fa fa-key"></i>
+                            <div className="field"> <label for="password"></label><i className="fas fa-key"></i>
                             <input  className="nodiv passwordsize" type="password" style={{ alignSelf: 'center' }} placeholder="password" onChange={(e) => setInfo({ ...info, password: e.target.value })}></input><br/>
         
                                 <div className="login-forgot-div">
