@@ -21,7 +21,6 @@ const Samples = () => {
   const [resultContains, setResultContains] = React.useState("");
   const [data,setData]=React.useState([])
   const [profilepic,setProfilePic]= React.useState('')
-  const [search, setSearch] = React.useState("");
 
   const display =true
   /* const onChange = (e)=>{

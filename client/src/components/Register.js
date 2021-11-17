@@ -71,7 +71,7 @@ export default function RegisterPage() {
         
                                 <div className="login-forgot-div">
                                     <input type="submit" name="submit" value="REGISTER" className="nodiv onlylogin"/>
-                                    <a href="" className="highlight">forgot password?</a>
+                                    <a href="/" className="highlight">forgot password?</a>
                                 </div>
                             </div>
                         </form>

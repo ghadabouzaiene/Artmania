@@ -50,7 +50,7 @@ const Login= () => {
 
                         <div className="login-forgot-div">
                     <input type="submit" name="submit" value="LOGIN" className="nodiv onlylogin"/>
-                            <a href="" class="highlight">forgot password?</a>
+                            <a href="/" class="highlight">forgot password?</a>
                         </div>
                     </div>
                 </form>
