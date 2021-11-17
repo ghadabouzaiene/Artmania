@@ -1,10 +1,8 @@
 import React from 'react'
-
 import useFirestore from '../firebaseHooks/useFirestore';
 import "./Home.css"
 import { useDispatch} from 'react-redux';
 import { logout} from '../redux/actions/authActions'
-
 import {  useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 

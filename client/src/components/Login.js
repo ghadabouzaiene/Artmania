@@ -26,26 +26,26 @@ const Login= () => {
 
     return (
 <div >
-<div class="wrapper">
-        <div class="loginContainer">
-            <div class="fixalign logindiv input-icons">
-                <form action="" method="POST" onSubmit={handleSubmit}>
+<div className="wrapper">
+        <div className="loginContainer">
+            <div className="fixalign logindiv input-icons">
+                <form onSubmit={handleSubmit}>
                     <h1>Login</h1>
                     <p>
                         Please fill in your basic info
                     </p>
                     <label for="email"></label>
-                    <div class="field">
+                    <div className="field">
 
-                        <span class="iconField">
-                        <i class="fas fa-user"></i>
+                        <span className="iconField">
+                        <i className="fas fa-user"></i>
 
                         </span>
                         <span className="inputField">
                         <input className="nodiv usernamesize" type="email" style={{ alignSelf: 'center' }} placeholder="email" onChange={(e) => setInfo({ ...info, email: e.target.value })}></input><br/>
                         </span>
                     </div>
-                    <div className="field"> <label for="password"></label><i class="fa fa-key"></i>
+                    <div className="field"> <label for="password"></label><i className="fa fa-key"></i>
                     <input  className="nodiv passwordsize" type="password" style={{ alignSelf: 'center' }} placeholder="password" onChange={(e) => setInfo({ ...info, password: e.target.value })}></input><br/>
 
                         <div className="login-forgot-div">
@@ -73,7 +73,7 @@ const Login= () => {
 
         </div>
     </div>
-    <div class="wrapper loading-screen">
+    <div className="wrapper loading-screen">
         <h2 id="loading">Loading Login...Please wait.</h2>
     </div>
 </div>
