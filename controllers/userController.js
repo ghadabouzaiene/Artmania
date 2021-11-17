@@ -1,7 +1,7 @@
 const User = require('../models/User')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-require('dotenv').config({ path: './config/config.env' });
+require('dotenv').config({ path: './config.env' });
 const { validationResult } = require('express-validator')
 
 const register = async (req, res) => {

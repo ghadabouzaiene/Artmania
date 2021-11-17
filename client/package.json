@@ -40,7 +40,7 @@
     "react-responsive-carousel": "^3.2.22",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^2.0.0",
+    "react-scripts": "^2.1.8",
     "react-scrolllock": "^5.0.1",
     "react-transition-group": "^4.4.2",
     "react-typing": "^1.0.0",
