@@ -23,17 +23,6 @@
          
         }
 
-        .fixalignreg {
-            width: 40%;
-            height: 56vh;
-            /* background-color: cadetblue; */
-            display: inline-block;
-            padding: 2%;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            box-sizing: center;
-            /* font-size: 1; */
-            font-size: initial;
-        }
 
         .registerdiv {
             height: 70vh;
@@ -41,6 +30,13 @@
             background-color: #0052b1;
             color: rgb(255, 255, 255);
             opacity: 80%;
+            /* background-color: cadetblue; */
+            display: inline-block;
+            padding: 2%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            box-sizing: center;
+            /* font-size: 1; */
+            font-size: initial;
             
             /* margin-left: 10px; */
 

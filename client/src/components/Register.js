@@ -35,7 +35,7 @@ export default function RegisterPage() {
         <div >
         <div className="registerwrapper">
                 <div className="registerContainer">
-                    <div className="fixalignreg registerdiv input-icons">
+                    <div className="registerdiv">
                         <form  onSubmit={handleSubmit}>
                             <h1>Register</h1>
                             <p>
@@ -76,7 +76,7 @@ export default function RegisterPage() {
                             </div>
                         </form>
                     </div>
-                    <div className="fixalignreg textalignreg">
+                    <div className="textalignreg">
                            <h2>You'll be redirected to login once you register </h2>
                            <br/>
                            <p>

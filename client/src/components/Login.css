@@ -11,8 +11,7 @@
 
         .loginContainer {
             position: absolute;
-            width: 70%;
-            height: 60%;
+          
             /* margin-left: 13%;
             margin-right: 21%; */
             left: 15%;
@@ -22,8 +21,14 @@
          
         }
 
-        .loginContainer  .fixalign {
-            width: 40%;
+       
+
+       .logindiv {
+            width: 50%;
+            background-color: #00b39b;
+            color: rgb(255, 255, 255);
+            opacity: 80%;
+           
             height: 56vh;
             /* background-color: cadetblue; */
             display: inline-block;
@@ -32,18 +37,11 @@
             box-sizing: center;
             /* font-size: 1; */
             font-size: initial;
-        }
-
-        .loginContainer .logindiv {
-            width: 50%;
-            background-color: #00b39b;
-            color: rgb(255, 255, 255);
-            opacity: 80%;
             
             /* margin-left: 10px; */
 
         }
-        .loginContainer .logindiv:hover {
+       .logindiv:hover {
             width: 50%;
             background-color:#00ceb2;
             color: rgb(255, 255, 255);

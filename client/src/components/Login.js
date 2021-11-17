@@ -28,7 +28,7 @@ const Login= () => {
 <div >
 <div className="wrapper">
         <div className="loginContainer">
-            <div className="fixalign logindiv input-icons">
+            <div className="logindiv">
                 <form onSubmit={handleSubmit}>
                     <h1>Login</h1>
                     <p>
@@ -55,7 +55,7 @@ const Login= () => {
                     </div>
                 </form>
             </div>
-            <div className="fixalign textalign">
+            <div className="textalign">
                    <h2>Sign up Now</h2>
                    <br/>
                    <p>
