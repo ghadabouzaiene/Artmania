@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { register } from '../redux/actions/authActions';
-import { Link, useHistory } from 'react-router-dom';
+import {  useHistory } from 'react-router-dom';
 import './Register.css'
 
 
@@ -35,7 +35,7 @@ export default function RegisterPage() {
         <div >
         <div className="registerwrapper">
                 <div className="registerContainer">
-                    <div className="registerdiv">
+                    <div className="fixalign registerdiv input-icons">
                         <form  onSubmit={handleSubmit}>
                             <h1>Register</h1>
                             <p>
@@ -66,31 +66,30 @@ export default function RegisterPage() {
                                 <input className="nodiv usernamesize" type="email" style={{ alignSelf: 'center' }} placeholder="email" onChange={(e) => setInfo({ ...info, email: e.target.value })}></input><br/>
                                 </span>
                             </div>
-                            <div className="field"> <label for="password"></label><i className="fas fa-key"></i>
-                            <input  className="nodiv passwordsize" type="password" style={{ alignSelf: 'center' }} placeholder="password" onChange={(e) => setInfo({ ...info, password: e.target.value })}></input><br/>
+                             <div className="field">
         
-                                <div className="login-forgot-div">
-                                    <input type="submit" name="submit" value="REGISTER" className="nodiv onlylogin"/>
-                                    <a href="/" className="highlight">forgot password?</a>
-                                </div>
+                                <span className="iconField">
+                                <i className="fas fa-user"></i>
+        
+                                </span>
+                                <span className="inputField">
+                                    
+                                <input className="nodiv usernamesize" type="email" style={{ alignSelf: 'center' }} placeholder="email" onChange={(e) => setInfo({ ...info, email: e.target.value })}></input><br/>
+                                </span>
                             </div>
+                                <span className="login-forgot-div">
+                                    <input type="submit" name="submit" value="REGISTER" className="nodiv onlylogin"/>
+                                    <a href="/"> <input type="submit" name="home" value=" GO HOME " className="onlylogin register"/></a>
+                                    <a href="/" className="highlight">forgot password?</a>
+                                </span>
+                          
                         </form>
                     </div>
-                    <div className="textalignreg">
-                           <h2>You'll be redirected to login once you register </h2>
-                           <br/>
-                           <p>
-                               Or 
-                              
-                           </p>
-        
-                          <Link to="/"> <input type="submit" name="submit" value=" GO HOME " className="onlylogin register"/></Link>
-                       
-                    </div>
+                  
         
                 </div>
             </div>
-            <div className="wrapper loading-screen">
+            <div class="wrapper loading-screen">
                 <h2 id="loading">Loading Register...Please wait.</h2>
             </div>
         </div>

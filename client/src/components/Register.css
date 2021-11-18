@@ -11,27 +11,25 @@
         }
 
         .registerContainer {
+            display: flex;
+            flex-wrap: wrap;
             position: absolute;
-            width: 70%;
-            height: 100%;
-            /* margin-left: 13%;
-            margin-right: 21%; */
-            left: 15%;
-            top: 20%;
+            width: 100vw;
+            height: 80vh;
             font-size: 0;
             animation: glide 1s 2s vertical-align(0.65, 0.05, 0.36, 1) forwards;
          
         }
 
+      
 
         .registerdiv {
-            height: 70vh;
-            width: 50%;
+            margin:50px;           
+             width: 50%;
             background-color: #0052b1;
             color: rgb(255, 255, 255);
             opacity: 80%;
             /* background-color: cadetblue; */
-            display: inline-block;
             padding: 2%;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             box-sizing: center;
@@ -60,7 +58,7 @@
         }
 
         .inputField {
-            display: inline-block;
+            
             width: 100%;
         }
 
@@ -83,7 +81,6 @@
             background-color: rgb(221, 221, 221);
             border: 0;
             color: rgb(61, 61, 61);
-            display: inline-block;
             transition: 400ms 200ms ease;
             padding-left: 1rem;
           padding-right: 1rem;
@@ -99,15 +96,7 @@
 
         }
 
-        .textalignreg {
-            text-align: center;
-            vertical-align: top;
-            background-color: rgba(172, 172, 172, 0.89);
-            color: cornsilk;
-            height: 70vh;
-            opacity: 70%;
-
-        }
+       
 
         .highlight {
             float: right;

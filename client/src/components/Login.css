@@ -11,7 +11,8 @@
 
         .loginContainer {
             position: absolute;
-          
+            width: 70%;
+            height: 60%;
             /* margin-left: 13%;
             margin-right: 21%; */
             left: 15%;
@@ -21,27 +22,20 @@
          
         }
 
-       
+        .fixalign {
+          
+        }
 
-       .logindiv {
+        .logindiv {
             width: 50%;
             background-color: #00b39b;
             color: rgb(255, 255, 255);
             opacity: 80%;
-           
-            height: 56vh;
-            /* background-color: cadetblue; */
-            display: inline-block;
-            padding: 2%;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            box-sizing: center;
-            /* font-size: 1; */
-            font-size: initial;
             
             /* margin-left: 10px; */
 
         }
-       .logindiv:hover {
+        .logindiv:hover {
             width: 50%;
             background-color:#00ceb2;
             color: rgb(255, 255, 255);

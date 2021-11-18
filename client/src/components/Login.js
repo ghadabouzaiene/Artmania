@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useHistory } from 'react-router-dom'
+import {useHistory } from 'react-router-dom'
 import { login } from '../redux/actions/authActions'
 import './Login.css'
 
@@ -28,7 +28,7 @@ const Login= () => {
 <div >
 <div className="wrapper">
         <div className="loginContainer">
-            <div className="logindiv">
+            <div className="fixalign logindiv input-icons">
                 <form onSubmit={handleSubmit}>
                     <h1>Login</h1>
                     <p>
@@ -55,7 +55,7 @@ const Login= () => {
                     </div>
                 </form>
             </div>
-            <div className="textalign">
+            <div className="fixalign textalign">
                    <h2>Sign up Now</h2>
                    <br/>
                    <p>
@@ -65,9 +65,9 @@ const Login= () => {
                       
                    </p>
 
-                  <Link to="/register"> <input type="submit" name="submit" value="REGISTER NOW" className="onlylogin register"/></Link>
+                  <a href="/register"> <input type="submit" name="submit" value="REGISTER NOW" className="onlylogin register"/></a>
         
-                  <Link to="/"> <input type="submit" name="submit" value="HOME" className="onlylogin register"/></Link>
+                  <a href="/"> <input type="submit" name="submit" value="HOME" className="onlylogin register"/></a>
                
             </div>
 
