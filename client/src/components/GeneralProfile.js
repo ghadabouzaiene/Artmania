@@ -5,7 +5,7 @@ import ImageListItem from '@mui/material/ImageListItem';
 import { getUsers } from '../redux/actions/usersActions';
 import { useDispatch, useSelector } from 'react-redux';
 import Avatar from '@mui/material/Avatar';
-import {Button} from 'react-bootstrap'
+import {Button} from '@mui/material'
 import firebase from 'firebase'
 import './GeneralProfile.css'
 import AccountMenu from './Menu';
@@ -58,7 +58,7 @@ const GeneralProfile = ({match}) => {
         src={profile}
         sx={{ width: 200, height: 200 }}
       /> }  
-          <div className="description"> { user && images ? <div><h1 >
+          <div className="desc"> { user && images ? <div><h1 >
           {user.firstname}  
         <Button >Hire</Button>{' '}
           <Button variant="light">Follow</Button>{' '}

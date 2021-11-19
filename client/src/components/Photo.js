@@ -153,25 +153,26 @@ history.push('/profile')
 
   return (
     <div className="add-photo-container">
+       <div className="upper-image"></div>
      <div className="adding">
-     <h1>Add  your Photo Info..</h1>
+     <h1>Add  your Photo Info..</h1> <br/>
        <div className="edit-post-container">
       <div className="break" />
 
       <form onSubmit={submitHandler}>
         <div >
           <UploadForm></UploadForm>
-       <br/> <TextField 
+       <br/> <TextField style={{marginLeft:"10px"}}
         helperText="Please enter the photo story"
         id="demo-helper-text-aligned"
         label="Story"
         onChange={handleChange}
-      />
+      /><br/>
 
 
 
 
-<FormControl sx={{ m: 1, width: 300 }}>
+<FormControl sx={{ m: 1, width:200}}>
         <InputLabel id="demo-multiple-chip-label">Tags</InputLabel>
         <Select
           labelId="demo-multiple-chip-label"
@@ -200,8 +201,8 @@ history.push('/profile')
           ))}
         </Select>
       </FormControl>
-     
-      <button className="btn" onClick={()=>FinalSubmit()}>Add</button>
+     <br/>
+      <button style={{matginLeft:"20px"}} className="btn" onClick={()=>FinalSubmit()}>Add</button>
         </div>
       </form>
     </div></div>

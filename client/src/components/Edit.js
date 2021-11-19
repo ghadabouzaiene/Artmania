@@ -3,7 +3,6 @@ import { useHistory } from "react-router";
 import Swal from "sweetalert2";
 import TextField from '@mui/material/TextField';
 import { projectFirestore } from "../firebase/config"
-import UploadForm from "../firebaseComps/UploadForm";
 import useFirestore from "../firebaseHooks/useFirestore" 
 import OutlinedInput from '@mui/material/OutlinedInput';
 import { useTheme } from '@mui/material/styles';
@@ -155,64 +154,62 @@ Swal.fire({
 
   return (
     <div className="add-photo-container">
-    <div className="adding">
-    <h1>
-      Edit your Photo Info..</h1>
-      <div className="edit-post-container">
+       <div className="upper-image"></div>
+     <div className="adding">
+     <h1>Edit your Photo Info..</h1> <br/>
+       <div className="edit-post-container">
+      <div className="break" />
+
+      <form onSubmit={submitHandler}>
+        <div >
+       <br/> <TextField style={{marginLeft:"10px"}}
+        helperText="Please enter the photo story"
+        id="demo-helper-text-aligned"
+        label="Story"
+        onChange={handleChange}
+      /><br/>
+
+
+
+
+<FormControl sx={{ m: 1, width:200}}>
+        <InputLabel id="demo-multiple-chip-label">Tags</InputLabel>
+        <Select
+          labelId="demo-multiple-chip-label"
+          id="demo-multiple-chip"
+          multiple
+          value={tagName}
+          onChange={handleTagChange}
+          input={<OutlinedInput id="select-multiple-chip" label="Tags" />}
+          renderValue={(selected) => (
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+              {selected.map((value) => (
+                <Chip key={value} label={value} />
+              ))}
+            </Box>
+          )}
+          MenuProps={MenuProps}
+        >
+          {tagList.map((name) => (
+            <MenuItem
+              key={name}
+              value={name}
+              style={getStyles(name, tagName, theme)}
+            >
+              {name}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+     <br/>
+      <button style={{matginLeft:"20px"}} className="btn" onClick={()=>FinalSubmit()}>Add</button>
+        </div>
+      </form>
+    </div></div>
+    <div className="side-image"></div>
      
-     <div className="break" />
-
-     <form onSubmit={submitHandler}>
-       <div >
-         <UploadForm></UploadForm>
-       <TextField
-       helperText="Please enter the photo story"
-       id="demo-helper-text-aligned"
-       label="Story"
-       onChange={handleChange}
-     />
-
-
-
-
-<FormControl sx={{ m: 1, width: 300 }}>
-       <InputLabel id="demo-multiple-chip-label">Tags</InputLabel>
-       <Select
-         labelId="demo-multiple-chip-label"
-         id="demo-multiple-chip"
-         multiple
-         value={tagName}
-         onChange={handleTagChange}
-         input={<OutlinedInput id="select-multiple-chip" label="Tags" />}
-         renderValue={(selected) => (
-           <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
-             {selected.map((value) => (
-               <Chip key={value} label={value} />
-             ))}
-           </Box>
-         )}
-         MenuProps={MenuProps}
-       >
-         {tagList.map((name) => (
-           <MenuItem
-             key={name}
-             value={name}
-             style={getStyles(name, tagName, theme)}
-           >
-             {name}
-           </MenuItem>
-         ))}
-       </Select>
-     </FormControl>
-    
-     <button className="btn" onClick={()=>FinalSubmit()}>Add</button>
-       </div>
-     </form>
-   </div></div>
-   <div className="side-image"></div>
-    
-   </div>
+    </div>
   )
 
-        }
+        } 
 export default Edit

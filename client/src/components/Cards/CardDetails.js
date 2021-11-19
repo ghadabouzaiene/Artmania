@@ -9,7 +9,7 @@ function CardDetails({ doc}) {
       <div className="card-details-info">
                 
         <p>Story : {doc.story}</p>
-        <p>Tags : {doc.tags}</p>
+        <p>Tags : {"#"+doc.tags+" "}</p>
         <p>Author : {doc.author_name}</p>
         <span>Created At : {doc.createdAt}</span>
       </div>

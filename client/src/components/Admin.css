@@ -1,0 +1,8 @@
+.banning{
+    display : flex;
+    flex-wrap: wrap;
+    margin: 200px;
+    text-align: center;
+    background-color:rgb(139, 137, 137);
+    color : white
+}

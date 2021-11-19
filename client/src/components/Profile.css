@@ -122,52 +122,49 @@ a:focus {
 }
 
 .profile-container{
-   
     width: 100vw;
 }
 
 .profile-container .description {
-   display: flex;
-   flex-wrap: wrap;
-   
+  
+   padding-left: 100px;
+   padding-bottom: 100px;
 }
 
 .profile-container .banner{
     display: flex;
     flex-wrap: wrap;
-    padding : 30px;
-    width: 100%;
     align-content: space-between;
+    
     height: 60vh;
     width: 100vw;
-    opacity: 0.6;
+    opacity: 0.7;
     background: url("https://source.unsplash.com/random") no-repeat center;
-    background-size: 100%;
+    background-size: cover;
     object-fit: cover;
+
 }
 
 .description {
     display: flex;
     flex-wrap: wrap;
-    padding : 30px;
-    width: 100%;
+    padding: 100px;
     align-content: space-between;
-    height: 60vh;
     width: 100vw;
     opacity: 0.7;
     background: url("https://source.unsplash.com/random") no-repeat center;
-    background-size: 100%;
+    background-size:cover;
     object-fit: cover;
     color:white;
-    text-transform: uppercase;
-    font-size: 7rem;
-}
+    text-transform: uppercase;}
+
 .description:hover{
     opacity:1
 }
 
-.profile-container .banner h1{
-align-content: flex-start;
+ .description  h3{
+align-content: flex-end;
+padding-left: 100px;
 }
 
 .profile-container .banner img{
@@ -175,13 +172,12 @@ align-content: flex-start;
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    margin: 20px;
     box-shadow:2px 2px 2px 2px grey;
     object-fit: cover;
     object-position: center right
     }
-.profile-container .banner .upload{
-    font-size: 0.7rem;
+.upload{
+    font-size: 1rem;
 }
 .profile-container .banner .logout{
 font-size: 2rem;
@@ -199,8 +195,6 @@ padding: 10px;
     text-align:right;
     position: fixed;
     top: 100px;
-    align-self: flex-end;
-    width:99vw;
-    margin-left:90vw
+   
 }
 

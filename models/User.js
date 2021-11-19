@@ -23,8 +23,8 @@ const userSchema = Schema({
         default: 'user'
     },
     isBanned: {
-        type: Boolean,
-        default: false
+        type: String,
+        default: "false"
     },
 })
 

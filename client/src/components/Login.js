@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {useHistory } from 'react-router-dom'
 import { login } from '../redux/actions/authActions'
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 import './Login.css'
 
 
@@ -17,62 +20,44 @@ const Login= () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         dispatch(login(info))
+         alert("you'll be directed to your profile..")
     }
     const history = useHistory()
     useEffect(() => {
         if (auth.isAuth)
             history.push('/profile')
+           
     }, [auth.isAuth,history])
 
     return (
-<div >
-<div className="wrapper">
-        <div className="loginContainer">
-            <div className="logindiv">
-                <form onSubmit={handleSubmit}>
-                    <h1>Login</h1>
-                    <p>
-                        Please fill in your basic info
-                    </p>
-                    <label for="email"></label>
-                    <div className="field">
+<div className="wrapper-login">
 
-                        <span className="iconField">
-                        <i className="fas fa-user"></i>
+<Box
+      sx={{
+        width: 500,
+        maxWidth: '100%',
+      }}
+    >
+         <h1>Login</h1><br/>
+     Email  <TextField fullWidth type="email" id="fullWidth" onChange={e=> setInfo({...info,email:e.target.value})} />
+      <br/><br/>
+     Password   <TextField fullWidth
+          id="outlined-password-input"
+          
+          type="password"
+          autoComplete="current-password"
+          onChange={e=> setInfo({...info,password:e.target.value})}
+        /><br/><br/><br/>
+           <Button type="submit" variant="contained" size="large" onClick={e =>handleSubmit(e)}>
+          Submit
+        </Button>
+        <a href="/register"><Button type="submit" variant="contained" size="large" >
+          Register 
+        </Button></a>
+    </Box>
 
-                        </span>
-                        <span className="inputField">
-                        <input className="nodiv usernamesize" type="email" style={{ alignSelf: 'center' }} placeholder="email" onChange={(e) => setInfo({ ...info, email: e.target.value })}></input><br/>
-                        </span>
-                    </div>
-                    <div className="field"> <label for="password"></label><i className="fa fa-key"></i>
-                    <input  className="nodiv passwordsize" type="password" style={{ alignSelf: 'center' }} placeholder="password" onChange={(e) => setInfo({ ...info, password: e.target.value })}></input><br/>
 
-                        <div className="login-forgot-div">
-                    <input type="submit" name="submit" value="LOGIN" className="nodiv onlylogin"/>
-                            <a href="/" class="highlight">forgot password?</a>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div className="fixalign textalign">
-                   <h2>Sign up Now</h2>
-                   <br/>
-                   <p>
-                       You don't have an account yet? No Worries! 
-                       Create one , 
-                       Free Regiter in one Click! 
-                      
-                   </p>
 
-                  <a href="/register"> <input type="submit" name="submit" value="REGISTER NOW" className="onlylogin register"/></a>
-        
-                  <a href="/"> <input type="submit" name="submit" value="HOME" className="onlylogin register"/></a>
-               
-            </div>
-
-        </div>
-    </div>
     <div className="wrapper loading-screen">
         <h2 id="loading">Loading Login...Please wait.</h2>
     </div>
@@ -82,5 +67,4 @@ const Login= () => {
 }
 
 export default Login
-
 

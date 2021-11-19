@@ -1,36 +1,42 @@
 .add-photo-container {
     display: flex;
-    gap:10vw;
+    flex-wrap:wrap;
     max-height: 100vh;
-background-color: rgb(172, 169, 169);
+    width: 100vw;
 color: honeydew;
+background-color:thistle ;
+
+}
+.add-photo-container .side-image{
+    background-size: 0;
 }
 
 .add-photo-container .adding {
-   width:40vw;
-   padding: 80px;
-   height: 100vh;
+    align-items: center;
+width:40vw;
+margin-top: 20px;
+margin-left: 5vw;
 }
+
 .add-photo-container .adding h1{
+    margin-bottom: 50px;
     color: rgb(236, 232, 232);
-    margin-left: 100px;
+    text-align: center;
 }
 
 .add-photo-container .side-image{
-    
-    width: 50vw;
     background: url("https://source.unsplash.com/random") no-repeat center;
     background-size: cover;
     object-fit: cover;
     height : 100vh;
     opacity: 0.9;
     box-shadow: 3px 3px 3px 5px grey;
+    width: 40vw;
 }
+
 .add-photo-container .btn{
     background-color: black;
     color:white;
-    margin-top: 100px;
-    margin-left: 400px;
     box-shadow: 3px 2px 3px 2px grey;
     font-size: 1rem;
     height: 35px;
@@ -40,3 +46,31 @@ color: honeydew;
 .add-photo-container .btn:hover{
 background-color: turquoise;
 }
+
+@media screen and (max-width: 600px) {
+    .add-photo-container {
+        max-height: 100vh;
+    }
+    .add-photo-container .adding{
+        display: flex;
+        flex-wrap: wrap;
+      width: 100vw;
+      margin-top: 20px;
+    }
+    .add-photo-container .side-image{
+        
+        background-size: 0;
+        width: 0;
+    }
+    .add-photo-container .upper-image{
+        background: url("https://source.unsplash.com/random") no-repeat center;
+        background-size: cover;
+        object-fit: cover;
+        height : 40vh;
+        opacity: 0.9;
+        box-shadow: 3px 3px 3px 5px grey;
+        width: 100vw;
+    }
+  }
+
+ 

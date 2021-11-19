@@ -1,55 +1,91 @@
-import React, { useEffect } from 'react'
+import React, { useEffect,useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUsers } from '../redux/actions/usersActions'
-import { DataGrid } from '@mui/x-data-grid';
-import './Admin.css'
+import SmartTable from "react-next-table";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-const columns = [
-  { field: '_id', headerName: 'ID', width: 70 },
-  { field: 'firstName', headerName: 'First name', width: 130 },
-  { field: 'email', headerName: 'Email', width: 130 },
+import './Admin.css'
+import { Link } from 'react-router-dom';
+
+const headCells = [
   {
-    field: 'role',
-    headerName: 'Role',
-    type: 'number',
-    width: 90,
+    id: "email",
+    numeric: false,
+    label: "Email",
+    width: 200,
   },
   {
-    field: 'isBanned',
-    headerName: 'Ban State',
-    width: 160,
+    id: "firstname",
+    numeric: false,
+    label: "First Name",
+    width: 200,
+  },
+  {
+    id: "isBanned",
+   boolean: true,
+    label: "Banned",
+    width: 300,
+  },
+  {
+    id: "role",
+    numeric: false,
+    label: "Role",
+    width: 150,
+  },
+  {
+    id: "_id",
+    numeric: false,
+    label: "ID",
+    width: 150,
   },
 ];
+
+
+
 const Admin = () => {
 
 
     const dispatch = useDispatch()
     const users = useSelector(state=> state.users.allusers)
-    const auth = useSelector(state=> state.auth)
+    const [id,setId]=useState("")
 
     useEffect(() => {
-      if(users){
         dispatch(getUsers())
+        
         console.log("users",users)
-      }
+       
+    
     },[])
+
+const handleChange=(e)=>{
+  setId(e.target.value)
+}
    
     return (
    
 <div>
 
 
-{users && auth ? <div>Admin
+{users ? <div><h1>Admin</h1>
   <div style={{ height: 400, width: '100vw' }}>
-      <DataGrid
-        rows={users}
-        columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
-        checkboxSelection
-      />
+  <SmartTable
+      title="Users"
+      data={users}
+      headCells={headCells}
+      // url="/api/admin/emails"
+      // searchDebounceTime={800}
+      // noPagination
+    />
     </div>
-</div>:<div></div>}
+     <div className="ban-user">
+     <h1>Input User ID</h1>
+    <input type="text" onChange={handleChange}  ></input>
+    <Link to={`/admin/ban/${id}`} ><button> Ban User </button></Link>
+  </div>
+</div>:<div>
+ 
+  
+  </div>}
 
 
  

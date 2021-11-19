@@ -1,0 +1,86 @@
+
+
+        .wrapper {
+            background: rgb(44, 44, 44);
+            width: 100vw;
+            height: 100vh;
+            background-image: url('https://wallpapertag.com/wallpaper/full/8/a/3/132233-new-4k-resolution-wallpaper-3840x2160-for-1080p.jpg');
+            background-size: cover;
+            padding:200px;
+            color:white
+        }
+
+       
+
+
+       
+        .loading-screen {
+            position: absolute;
+            background: #222;
+            color: rgb(0, 171, 250);
+            text-align: center;
+            top: 0;
+            left: 0;
+            animation: slide 1s 2s ease forwards;
+        }
+
+        #loading {
+            margin-top: 20%;
+            font-family: 'Courier New', Courier, monospace;
+
+        }
+
+/*      
+        @keyframes{
+            from{
+                padding: 0.5rem;
+            }
+            to{
+                padding:1.5rem;
+            }
+        } */
+
+
+        @keyframes slide {
+            from {
+                top: 0;
+
+            }
+
+            to {
+                top: -100%;
+            }
+        }
+
+        @keyframes slideOut {
+            from {
+                top: 0;
+
+            }
+
+            to {
+                top: -100%;
+            }
+        }
+
+        @keyframes widthAppear {
+            from {
+                display: none;
+                width: 0;
+            }
+
+            to {
+                display: block;
+                width: 75%;
+            }
+        }
+
+        @keyframes glide {
+            from {
+                top: 90%;
+            }
+
+            to {
+                top: 20%;
+            }
+        }

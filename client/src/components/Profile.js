@@ -29,6 +29,7 @@ const UserProfile = ({match}) => {
 const history = useHistory()
   //declaring
   const auth = useSelector(state => state.auth)
+  
   const dispatch = useDispatch()
   const collectionRef = firebase.firestore().collection('images')
   const picRef = firebase.firestore().collection('profile pictures')
@@ -76,6 +77,7 @@ const history = useHistory()
       console.log(data)
      
  }
+ 
       
     }, [])
     
@@ -98,50 +100,51 @@ const handleReloadHome =()=>{
     return (
 
       <div >
-        <div className="profile-container"> 
+       { auth.user ?  <div className="profile-container"> 
      
-          <div className="description"> { auth.user  ? <span>
-              <Avatar style={{boxShadow:"0px 5px 5px 0px"}} className="avatar"
-        alt="Remy Sharp"
-        src={profilepic}
-        sx={{ width: 200, height: 200 }}
-      /> 
-         <Upload ></Upload>
-         <h1 >
-         Welcome, {auth.user.firstname}</h1>
-           </span> : <div></div>}</div>
+     <div className="description"> { auth.user  ? <span>
+         <h3>
+ Welcome, {auth.user.firstname}</h3>
+         <Avatar style={{boxShadow:"0px 5px 5px 0px"}} className="avatar"
+   alt="Remy Sharp"
+   src={profilepic}
+   sx={{ width: 200, height: 200 }}
+ /> 
+    <Upload ></Upload>
+  
+      </span> : <div></div>}</div>
 
 <Box sx={{ width: '100%', typography: 'body1' }}>
-      <TabContext value={value}>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <TabList onChange={handleChange} aria-label="lab API tabs example">
-            <Tab label="Uploads" value="1" />
-            <Tab label="Favorite" value="2" />
-            <Tab label="Collections" value="3" />
-          </TabList>
-        </Box>
-       
-        <TabPanel value="1"> 
-        <div className="gallery"> 
-      { userdocs && userdocs.length!==0 ? 
-    userdocs.map( el => 
-        <Cards key={el.id} posts={el} likedPhotos={data} display={display}/>) 
-  : <div> No Uploads Yet</div>} </div></TabPanel>
-        
-        <TabPanel value="3">This Feature is not functional yet</TabPanel>
-      </TabContext>
-    </Box>
-    
+ <TabContext value={value}>
+   <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+     <TabList onChange={handleChange} aria-label="lab API tabs example">
+       <Tab label="Uploads" value="1" />
+       <Tab label="Favorite" value="2" />
+       <Tab label="Collections" value="3" />
+     </TabList>
+   </Box>
+  
+   <TabPanel value="1"> 
+   <div className="gallery"> 
+ { userdocs && userdocs.length!==0 ? 
+userdocs.map( el => 
+   <Cards key={el.id} posts={el} likedPhotos={data} display={display}/>) 
+: <div> No Uploads Yet</div>} </div></TabPanel>
+   
+   <TabPanel value="3">This Feature is not functional yet</TabPanel>
+ </TabContext>
+</Box>
+
 <div className="add-btn"><Link to="/addphoto" onClick={handleReload } ><Fab color="primary" aria-label="add">
-  <AddIcon />
+<AddIcon />
 </Fab></Link>
-<Link><Fab color="secondary" aria-label="out" onClick={()=>Logout()}>
+<Link to="/"><Fab color="secondary" aria-label="out" onClick={()=>Logout()}>
 <i className="fas fa-sign-out-alt"></i>
 </Fab></Link>
 <Link to="/" onClick={handleReloadHome } ><Fab color="secondary" aria-label="home">
-    <i className="fas fa-home"></i>
+<i className="fas fa-home"></i>
 </Fab></Link></div>
-</div>
+</div>: <div>LOADING...</div>}
       </div>
     )
 }

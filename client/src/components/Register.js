@@ -3,7 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { register } from '../redux/actions/authActions';
 import {  useHistory } from 'react-router-dom';
 import './Register.css'
-
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 
 export default function RegisterPage() {
     
@@ -18,7 +20,8 @@ export default function RegisterPage() {
 
     useEffect(() => {
         if (auth.isAuth) {
-            history.push('/login')
+            history.push('/profile')
+           
         }
 
     }, [auth.isAuth,history])
@@ -26,69 +29,38 @@ export default function RegisterPage() {
     const handleSubmit = (e) => {
         e.preventDefault()
         dispatch(register(info))
+        alert("you'll be directed to your profile..")
 
     }
 
     
 
     return (
-        <div >
-        <div className="registerwrapper">
-                <div className="registerContainer">
-                    <div className="fixalign registerdiv input-icons">
-                        <form  onSubmit={handleSubmit}>
-                            <h1>Register</h1>
-                            <p>
-                                Please fill in your basic info
-                            </p>
-
-                            <label for="username"></label>
-                            <div className="field">
-        
-                                <span className="iconField">
-                                <i className="fas fa-align-center"></i>
-        
-                                </span>
-                                <span className="inputField">
-                                    
-                                <input className="nodiv usernamesize" type="text" style={{ alignSelf: 'center' }} placeholder="firstname" onChange={(e) => setInfo({ ...info, firstname: e.target.value })}></input><br/>
-                                </span>
-                            </div>
-                            <label for="email"></label>
-                            <div className="field">
-        
-                                <span className="iconField">
-                                <i className="fas fa-user"></i>
-        
-                                </span>
-                                <span className="inputField">
-                                    
-                                <input className="nodiv usernamesize" type="email" style={{ alignSelf: 'center' }} placeholder="email" onChange={(e) => setInfo({ ...info, email: e.target.value })}></input><br/>
-                                </span>
-                            </div>
-                             <div className="field">
-        
-                                <span className="iconField">
-                                <i className="fas fa-user"></i>
-        
-                                </span>
-                                <span className="inputField">
-                                    
-                                <input className="nodiv usernamesize" type="email" style={{ alignSelf: 'center' }} placeholder="email" onChange={(e) => setInfo({ ...info, email: e.target.value })}></input><br/>
-                                </span>
-                            </div>
-                                <span className="login-forgot-div">
-                                    <input type="submit" name="submit" value="REGISTER" className="nodiv onlylogin"/>
-                                    <a href="/"> <input type="submit" name="home" value=" GO HOME " className="onlylogin register"/></a>
-                                    <a href="/" className="highlight">forgot password?</a>
-                                </span>
-                          
-                        </form>
-                    </div>
+        <div className="wrapper">
+         
+        <Box style={{paddingLeft:"500px"}}
+              sx={{
+                width: "100vw",
+                maxWidth: '100%',
+              }}
+            >
+                  <h1>Register</h1><br/>
+             Email  <TextField fullWidth type="email" id="fullWidth" onChange={e=> setInfo({...info,email:e.target.value})} />
+              <br/><br/>
+              Username  <TextField fullWidth type="text" id="fullWidth" onChange={e=> setInfo({...info,firstname:e.target.value})} />
+              <br/><br/>
+             Password   <TextField fullWidth
+                  id="outlined-password-input"
                   
+                  type="password"
+                  autoComplete="current-password"
+                  onChange={e=> setInfo({...info,password:e.target.value})}
+                /><br/><br/><br/>
+                   <Button type="submit" variant="contained" size="large" onClick={e =>handleSubmit(e)}>
+                  Submit
+                </Button>
+            </Box>
         
-                </div>
-            </div>
             <div class="wrapper loading-screen">
                 <h2 id="loading">Loading Register...Please wait.</h2>
             </div>

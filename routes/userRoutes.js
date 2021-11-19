@@ -8,6 +8,8 @@ router.post('/register', validationCheck, userController.register)
 router.post('/login', validationCheck, userController.login)
 router.get('/getprofile', tokenMiddleware, userController.getUserProfile)
 router.get('/', userController.getUsers)
+router.put('/:id', userController.BanUser)
+
 
 
 

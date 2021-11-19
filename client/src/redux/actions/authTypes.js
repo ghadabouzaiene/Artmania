@@ -15,3 +15,4 @@ export const GET_USERS_SUCCESS = "GET_USERS_SUCCESS"
 export const LOGOUT = "LOGOUT"
 
 export const GET_PHOTOS_SUCCESS = "GET_PHOTOS_SUCCESS"
+export const GET_USER_BAN = "GET_USER_BAN"

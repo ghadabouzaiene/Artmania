@@ -15,12 +15,12 @@ const Samples = () => {
   const history=useHistory()
   const auth = useSelector(state => state.auth)
   const collectionRef = firebase.firestore().collection('images')
-  const picRef = firebase.firestore().collection('profile pictures')
+ 
   const {docs} = useFirestore('images')
 
   const [resultContains, setResultContains] = React.useState("");
   const [data,setData]=React.useState([])
-  const [profilepic,setProfilePic]= React.useState('')
+
 
   const display =true
   /* const onChange = (e)=>{
@@ -44,15 +44,7 @@ const Samples = () => {
   setData(hitData)
   console.log(resultContains)
 
-      const datapic = await picRef
-      .where("owner", "==" ,  auth.user._id)
-      .orderBy("createdAt","desc")
-      .limit(1)
-      .get()
-      .then(res => res.docs.map(doc => doc.data()))
-      console.log(datapic)
-      setProfilePic(datapic[0].url)
-      console.log(profilepic)
+      
 
   }else{
     history.push('/login')
@@ -64,8 +56,8 @@ const Samples = () => {
 
     return (
         <div>
-         { auth && auth.user && docs && data && profilepic ?
-        <div> <div style={{marginLeft:"80vw"}}> </div>
+         { auth && auth.user && docs && data  ?
+        <div> <div style={{textAlign:"right",paddingTop:"70px",paddingRight:"20px",fontSize:"1rem"}}>ARTMANIA</div>
           <div className="banner">
             <div className="text">
              <h2> Our Users Upload ART</h2> <br/>
