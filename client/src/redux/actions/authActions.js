@@ -10,7 +10,7 @@ export const login = (info) => async (dispatch) => {
     dispatch(clearError())
     dispatch(startLoading("Login"))
     try {
-        const res = await axios.post(`${prefixe}/api/user/login`, info)
+        const res = await axios.post(`/api/user/login`, info)
         dispatch({
             type: LOGIN_SUCCESS,
             payload: res.data
@@ -27,7 +27,7 @@ export const register = (info) => async (dispatch) => {
     dispatch(clearError())
     dispatch(startLoading("Register"))
     try {
-        const res = await axios.post(`${prefixe}/api/user/register`, info)
+        const res = await axios.post(`/api/user/register`, info)
         dispatch({
             type: REGISTER_SUCCESS,
             payload: res.data
@@ -45,7 +45,7 @@ export const getProfile = () => async (dispatch) => {
     dispatch(startLoading("Get my profile"))
     try {
         setToken()
-        const { data } = await axios.get(`${prefixe}/api/user/getprofile`)
+        const { data } = await axios.get(`/api/user/getprofile`)
         dispatch({
             type: GET_PROFILE_SUCCESS,
             payload: data
