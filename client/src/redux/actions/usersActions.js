@@ -11,7 +11,7 @@ export const getUsers = () => async (dispatch) => {
     dispatch(startLoading("Get Users"))
     try {
         
-        const { data } = await axios.get(`${prefixe}/api/user/`)
+        const { data } = await axios.get(`/api/user/`)
         dispatch({
             type: GET_USERS_SUCCESS,
             payload: data
@@ -29,7 +29,7 @@ export const banUser = (id,info) => async (dispatch) => {
     dispatch(startLoading("Get Users"))
     try {
         
-        const { data } = await axios.put(`${prefixe}/api/user/${id}`,info)
+        const { data } = await axios.put(`/api/user/${id}`,info)
         dispatch({
             type: GET_USER_BAN,
             payload: data
