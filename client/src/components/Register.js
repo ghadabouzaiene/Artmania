@@ -29,7 +29,7 @@ export default function RegisterPage() {
     const handleSubmit = (e) => {
         e.preventDefault()
         dispatch(register(info))
-        alert("you'll be directed to your profile..")
+      
 
     }
 
